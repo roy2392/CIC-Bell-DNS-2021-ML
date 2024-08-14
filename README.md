@@ -9,7 +9,6 @@ This project involves the data preprocessing and exploratory data analysis (EDA)
 - [Getting Started](#getting-started)
 - [Data Preprocessing](#data-preprocessing)
 - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
-- [Storing Processed Data](#storing-processed-data)
 
 ## Dataset
 
