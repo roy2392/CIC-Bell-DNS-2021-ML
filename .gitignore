@@ -1,0 +1,12 @@
+# Ignore secrets
+.env
+
+# Ignore raw and processed CSV files
+data/raw/*.csv
+data/processed/*.csv
+
+# Ignore virtual environment
+venv/
+env/
+ENV/
+.venv/
