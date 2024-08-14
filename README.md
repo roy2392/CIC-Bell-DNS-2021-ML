@@ -18,6 +18,7 @@ This project involves the data preprocessing and exploratory data analysis (EDA)
 The DNS-2021 dataset can be accessed from the University of New Brunswick's [website](https://www.unb.ca/cic/datasets/dns-2021.html). This dataset contains detailed network traffic data, which is used for analyzing and detecting Domain Name System (DNS) anomalies.
 
 ## Project Structure
+.
 ├── data/
 │   ├── raw/                  # Raw data from the DNS-2021 dataset
 │   ├── processed/            # Processed data after preprocessing steps
@@ -25,7 +26,9 @@ The DNS-2021 dataset can be accessed from the University of New Brunswick's [web
 ├── scripts/
 │   ├── data_preprocessing.py # Script for data preprocessing
 │   ├── eda.py                # Script for EDA
-├── README.md                 # Project README file
+├── requirements.txt          # Project dependencies
+├── .gitignore                # Git ignore file
+├── README.md                 # Project README file              
 
 
 ## Getting Started
