@@ -1,9 +1,8 @@
 # Ignore secrets
 .env
 
-# Ignore raw and processed CSV files
-data/raw/*.csv
-data/processed/*.csv
+# Ignore any other CSV files
+*.csv
 
 # Ignore virtual environment
 venv/
