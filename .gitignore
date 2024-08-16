@@ -9,3 +9,9 @@ venv/
 env/
 ENV/
 .venv/
+
+#ignore conda environment
+.conda/
+
+# ignore __pycache__
+__pycache__/

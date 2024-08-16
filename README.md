@@ -18,15 +18,22 @@ The DNS-2021 dataset can be accessed from the University of New Brunswick's [web
 ```
 .
 ├── data/
-│   ├── raw/                  # Raw data from the DNS-2021 dataset
-│   ├── processed/            # Processed data after preprocessing steps
-├── notebooks/                # Jupyter notebooks for EDA
+│   ├── raw/                      # Raw data from the DNS-2021 dataset
+│   ├── processed/                # Processed data after preprocessing steps
+├── eda_utils/                    # Utility functions for EDA
+│   ├── __init__.py               # Init file for the eda_utils module
+│   ├── eda_functions.py          # Python script containing EDA functions
+├── notebooks/                    # Jupyter notebooks for EDA
+│   ├── __init__.py               # Init file for the notebooks module
+│   ├── CIC Bell DNS EDA.ipynb    # Jupyter notebook for the CIC Bell DNS EDA
+├── processed/                    # Processed data directory (not used in this context)
 ├── scripts/
-│   ├── data_preprocessing.py # Script for data preprocessing
-│   ├── eda.py                # Script for EDA
-├── requirements.txt          # Project dependencies
-├── .gitignore                # Git ignore file
-├── README.md                 # Project README 
+│   ├── data_preprocessing.py     # Script for data preprocessing
+├── venv/                         # Python virtual environment directory
+│   ├── ...                       # Virtual environment files and folders
+├── requirements.txt              # Project dependencies
+├── .gitignore                    # Git ignore file
+├── README.md                     # Project README            # Project README 
 ```              
 
 
