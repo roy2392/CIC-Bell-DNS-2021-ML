@@ -6,6 +6,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from io import StringIO
+import ast
+import string
 
 # this function will fill the numerical values based on the skewness of the data 
 def decide_fill_method(df_list, columns):
@@ -222,3 +224,60 @@ def frequency_encode(df, exclude_columns=None, drop_original=True):
         df = df.drop(columns=columns_to_encode)
     
     return df
+
+# this is a function to preprocess the char_distribution column
+def preprocess_char_distribution(df, column_name='char_distribution'):
+    # function to  evaluate dictionary-like strings
+    def safe_eval(val):
+        try:
+            return ast.literal_eval(val)
+        except (ValueError, SyntaxError):
+            return None
+    
+    # apply the safe evaluation function
+    df[column_name] = df[column_name].apply(lambda x: safe_eval(str(x)))
+    
+    # filter to keep only rows where the evaluation resulted in a dictionary
+    df_filtered = df[df[column_name].apply(lambda x: isinstance(x, dict))]
+    
+    # expand the dictionary into separate columns, keeping only English letters (A-Z)
+    char_df = df_filtered[column_name].apply(lambda x: {k: v for k, v in x.items() if k in string.ascii_letters})
+    char_df = char_df.apply(pd.Series).fillna(0).astype(int)
+
+    # get the names of the newly created columns
+    new_columns = char_df.columns.tolist()
+    
+    # concatenate the new DataFrame with the original one
+    df_encoded = pd.concat([df_filtered, char_df], axis=1)
+    
+    # drop the original column - no longer needed
+    df_encoded.drop(column_name, axis=1, inplace=True)
+    
+    return df_encoded, new_columns
+
+# plot function for charcters distribution in malicious vs benign
+def plot_character_frequencies_with_labels(df, class_column='class', character_columns='class'):
+
+    if character_columns is None:
+        print("No character columns to plot.")
+        return
+    
+    # calculate the mean frequency of each character column grouped by class
+    class_distribution = df.groupby(class_column)[character_columns].mean().T
+    
+    ax = class_distribution.plot(kind='bar', figsize=(14, 8), cmap='viridis')
+    plt.title('Character Frequency Distribution Across Classes')
+    plt.xlabel('Character')
+    plt.ylabel('Mean Frequency')
+    plt.legend(title='Class')
+    plt.xticks(rotation=45)
+    
+    # Add labels on top of the bars
+    for p in ax.patches:
+        ax.annotate(f'{p.get_height():.2f}', (p.get_x() + p.get_width() / 2., p.get_height()),
+                    ha='center', va='center', xytext=(0, 10), textcoords='offset points')
+    
+    plt.tight_layout()
+    plt.show() 
+
+
