@@ -206,3 +206,19 @@ def analyze_categorical_feature(df, feature):
             summary += f"{cat}: {count} ({percentages[cat]:.1f}%)\n"
         summary += "\n"
         print(summary)
+
+# this function will apply frequency encoding to the categorical columns
+def frequency_encode(df, exclude_columns=None, drop_original=True):
+    if exclude_columns is None:
+        exclude_columns = []
+    
+    columns_to_encode = [col for col in df.select_dtypes(include=['object', 'category']).columns if col not in exclude_columns]
+    
+    for col in columns_to_encode:
+        freq_map = df[col].value_counts().to_dict()
+        df[col + '_encoded'] = df[col].map(freq_map)
+    
+    if drop_original:
+        df = df.drop(columns=columns_to_encode)
+    
+    return df

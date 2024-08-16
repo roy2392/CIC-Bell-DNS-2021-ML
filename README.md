@@ -2,6 +2,8 @@
 
 This project involves the data preprocessing and exploratory data analysis (EDA) of the DNS-2021 dataset from the University of New Brunswick. The data is stored in an S3 bucket and processed using Python.
 
+the executive C-level presentation for the EDA can be found here: [Gamma Link](https://gamma.app/docs/Executive-Overview-of-DNS-2021-Exploratory-Data-Analysis-yqnb9e87sqg59sc)
+
 ## Table of Contents
 
 - [Dataset](#dataset)

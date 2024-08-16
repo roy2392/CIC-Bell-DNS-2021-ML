@@ -2,5 +2,6 @@ pandas==2.2.2
 numpy==1.26.4
 Matplotlib==3.8.4
 seaborn==0.13.2
+scikit-learn==1.5.1
 python-dotenv==0.19.1
 boto3==1.28.0
